@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import PageHeader from "../components/PageHeader";
 import { Spinner } from "../components/Loader";
 import { fetchAPI } from "../utils/fetch-api";
 import { useRouter } from "next/navigation";
@@ -60,9 +59,16 @@ export default function Login() {
 
     return (
         <div>
-            <PageHeader heading="Login dengan username" text="Akses menu lebih lengkap" />
             <div className="flex justify-center">
                 <div className="container shadow-2xl px-4 py-2 sm:p-20 w-3/4 sm:w-1/2 rounded-md ">
+                    <div className="w-full text-center mb-6">
+                        <img src="https://depok.go.id/storage/uploads/blobid0.png" alt="Logo Depok" className="h-32 mx-auto" />
+                        <h2 className="text-3xl my-4 lg:text-4xl font-bold font-heading">SIPEP-DKP3</h2>
+                        <h3 className="text-violet-400 font-bold">
+                            Sistem Informasi Perencanaan, Evaluasi dan Pelaporan
+                            Dinas Ketahanan Pangan, Pertanian dan Perikanan
+                        </h3>
+                    </div>
                     {errorMessage && (
                         <p className="text-red-500 bg-red-200 px-4 py-2 rounded-lg my-3">
                             {errorMessage}
