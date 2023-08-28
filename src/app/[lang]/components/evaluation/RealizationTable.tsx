@@ -31,7 +31,7 @@ export default function RealizationTable({
     openModal()
   }
 
-  const lastMonth = realizations[realizations.length - 1].month.data.id
+  const lastMonth = realizations.at(-1)?.month.data.id ?? 1
 
   return (
     <div className="relative overflow-x-auto">

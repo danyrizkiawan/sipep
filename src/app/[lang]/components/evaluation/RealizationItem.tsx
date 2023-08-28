@@ -24,7 +24,7 @@ export default function RealizationItem({
     return (
         <tr className="bg-gray-50 text-center">
         {realization == undefined ? (
-            <td colSpan={4} className="px-6 py-3">Belum ada data realisasi</td>
+            <td colSpan={9} className="px-6 py-3">Belum ada data realisasi</td>
         ) : (
             <>
                 <td className="px-6 py-3">{realization.month.data.attributes.name}</td>

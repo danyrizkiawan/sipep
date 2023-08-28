@@ -81,6 +81,19 @@ export interface User {
 	unit: Unit;
 }
 
+export interface UserWithAttributes {
+	id: number;
+	attributes: {
+		username: string;
+		fullName: string;
+		nip: string;
+		echelon: string;
+		position: string;
+		evaluationScope: string;
+		unit: Unit;
+	}
+}
+
 export interface Unit {
 	id: number;
 	name: string;
@@ -250,6 +263,6 @@ export interface Pic {
 		data: Month;
 	}
 	user: {
-		data: User;
+		data: UserWithAttributes;
 	}
 }

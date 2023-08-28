@@ -32,7 +32,7 @@ export default function RealizationSection({
           </div>
           <div className="grid grid-cols-2 w-full lg:w-3/4 py-3 border-b">
             <h5 className="font-semibold">Penanggung Jawab</h5>
-            <p>{pic?.user.data.fullName ?? '-'}</p>
+            <p>{pic?.user.data.attributes.fullName ?? '-'}</p>
           </div>
       </div>
       <div className="flex justify-end my-4">
