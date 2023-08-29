@@ -85,6 +85,7 @@ export default function EvaluationReport() {
             <div className="flex justify-center">
                 <div className="px-2 py-2 sm:py-10 w-full overflow-auto">
                     <EvaluationReportHeader
+                        user={user}
                         onMonthChange={setMonth}
                         onIsUnitChange={setIsUnit}
                         onDateChange={setDate}

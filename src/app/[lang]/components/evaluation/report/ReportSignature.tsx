@@ -16,7 +16,7 @@ export default function ReportSignature({
 } : ReportSignatureParams) {
     const formattedDate = `Depok, ${formatDate(date.toDateString())}`
     const isHead = user?.id == 1
-    const headOfUnit = user?.unit.headOfUnit.at(-1)?.user
+    const headOfUnit = user?.unit?.headOfUnit.at(-1)?.user
 
     return (
         <div className={`w-full flex ${isHead ? 'justify-end' : 'justify-between'} `}>
@@ -40,22 +40,26 @@ export default function ReportSignature({
                     </div>
                 )
             }
-            <div className="flex flex-col text-center my-10">
-                {
-                    isUnit ?
-                    <p>{formattedDate}</p> :
-                    <p>Mengetahui,</p>
-                }
-                <p>{headOfUnit?.position}</p>
-                <p>Dinas Ketahanan Pangan, Pertanian dan Perikanan</p>
-                <p>Kota Depok</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <p className="font-semibold underline">{headOfUnit?.fullName}</p>
-                <p>NIP. {headOfUnit?.nip}</p>
-            </div>
+            {
+                !isHead && (
+                    <div className="flex flex-col text-center my-10">
+                        {
+                            isUnit ?
+                            <p>{formattedDate}</p> :
+                            <p>Mengetahui,</p>
+                        }
+                        <p>{headOfUnit?.position}</p>
+                        <p>Dinas Ketahanan Pangan, Pertanian dan Perikanan</p>
+                        <p>Kota Depok</p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <p className="font-semibold underline">{headOfUnit?.fullName}</p>
+                        <p>NIP. {headOfUnit?.nip}</p>
+                    </div>
+                )
+            }
             {
                 !isUnit && (
                     <div className="flex flex-col text-center my-10">

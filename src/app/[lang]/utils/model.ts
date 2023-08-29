@@ -78,7 +78,7 @@ export interface User {
 	echelon: string;
 	position: string;
 	evaluationScope: string;
-	unit: Unit;
+	unit?: Unit;
 }
 
 export interface UserWithAttributes {

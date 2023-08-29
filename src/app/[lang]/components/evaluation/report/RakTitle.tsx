@@ -19,7 +19,7 @@ export default function RakTitle({
       { !isUnit && (
         <h1>{user?.evaluationScope}</h1>
       ) }
-      <h1>{user?.unit.name}</h1>
+      <h1>{user?.unit?.name}</h1>
       <h1>Dinas Ketahanan Pangan, Pertanian dan Perikanan Kota Depok</h1>
     </div>
   )

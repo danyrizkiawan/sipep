@@ -17,7 +17,7 @@ export async function setUser(user: User) {
   }
   Cookies.set('id', user.id.toString());
   Cookies.set('username', user.username);
-  Cookies.set('unit', user.unit.id.toString());
+  Cookies.set('unit', user.unit?.id.toString() ?? '0');
   Cookies.set('user', JSON.stringify(user));
 };
 
