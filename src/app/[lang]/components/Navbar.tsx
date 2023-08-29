@@ -71,6 +71,9 @@ export default function Navbar({
               ) : (
               <>
                 <li>
+                  <a className="text-right ml-20" href="#">Anda login sebagai, <span className="text-violet-800 underline">{user.username}</span></a>
+                </li>
+                <li>
                   <a className="px-5 py-2 rounded bg-violet-400 text-gray-100 cursor-pointer" onClick={handleSubmit}>
                     Logout
                   </a>
