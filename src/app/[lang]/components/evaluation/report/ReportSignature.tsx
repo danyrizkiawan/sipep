@@ -14,7 +14,7 @@ export default function ReportSignature({
     date,
     isUnit,
 } : ReportSignatureParams) {
-    const formattedDate = `Depok, ${formatDate(date.toLocaleDateString())}`
+    const formattedDate = `Depok, ${formatDate(date.toDateString())}`
     const isHead = user?.id == 1
     const headOfUnit = user?.unit.headOfUnit.at(-1)?.user
 
