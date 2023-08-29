@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeader from "../../components/PageHeader";
 import { Month, Program } from "../../utils/model";
 import { fetchAuthenticatedAPI } from "../../utils/fetch-api";
@@ -25,7 +25,7 @@ export default function EvaluationReport() {
         try {
             const unit = getLocalUnit();
             const path = `/programs`;
-            const filters = isUnit ? { unit: { id: { $eq: unit } } } : { sub_activities: { subActivityPic: { id: { $eq: user?.id } } } }
+            const filters = user.id == 1 ? {} : isUnit ? { unit: { id: { $eq: unit } } } : { sub_activities: { subActivityPic: { user: { id: { $eq: user?.id } } } } }
             const urlParamsObject = {
                 populate: {
                     programTarget: {
@@ -66,7 +66,18 @@ export default function EvaluationReport() {
             const response = await fetchAuthenticatedAPI(path, urlParamsObject);
 
             if (response.data) {
-                setPrograms(response.data);
+                if (user.id == 1) {
+                    setPrograms(response.data)
+                    return
+                } else {
+                    var data = response.data as Program[]
+                    data = data.map(p => {
+                        const activities = p.attributes.activities.data.filter(a => a.attributes.unit.data.id.toString() == unit)
+                        p.attributes.activities.data = activities
+                        return p
+                    })
+                    setPrograms(data);
+                }
             }
         } catch (error) {
             console.error(error);

@@ -205,6 +205,9 @@ export interface Activity {
 		sub_activities: {
 			data: SubActivity[];
 		};
+		unit: {
+			data: Unit;
+		}
     };
 }
 
