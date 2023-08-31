@@ -97,6 +97,8 @@ export default function EvaluationReport() {
                 <div className="px-2 py-2 sm:py-10 w-full overflow-auto">
                     <EvaluationReportHeader
                         user={user}
+                        programs={programs}
+                        month={month}
                         onMonthChange={setMonth}
                         onIsUnitChange={setIsUnit}
                         onDateChange={setDate}

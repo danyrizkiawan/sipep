@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Month, User } from "../../../utils/model";
+import { Month, Program, User } from "../../../utils/model";
 import MonthSelect from "../MonthSelect";
+import ReportExportButton from "./ReportExportButton";
 
 interface EvaluationReportHeaderParams {
   user?: User;
+  programs: Program[];
+  month?: Month;
   onMonthChange: (month: Month | undefined) => void;
   onIsUnitChange: (isUnit: boolean) => void;
   onDateChange: (date: Date) => void;
@@ -13,6 +16,8 @@ interface EvaluationReportHeaderParams {
 
 export default function EvaluationReportHeader({
   user,
+  programs,
+  month,
   onMonthChange,
   onIsUnitChange,
   onDateChange,
@@ -56,6 +61,15 @@ export default function EvaluationReportHeader({
       <div className="form-group w-full">
         <h2 className="text-xl font-semibold">Pilih Tanggal Print</h2>
         <input type="date" name="date" id="date" className="px-4 py-3 mt-2 rounded-md w-full" onChange={onDateSelected}/>
+      </div>
+      <div className="form-group flex flex-col justify-end">
+        <h2 className="text-xl font-semibold"> </h2>
+        <ReportExportButton
+          user={user}
+          month={month}
+          isUnit={isUnit == 0}
+          programs={programs}
+        />
       </div>
     </div>
   )

@@ -11,6 +11,7 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
     "@tailwindcss/forms": "^0.5.4",
+    "@types/file-saver": "^2.0.5",
     "@types/js-cookie": "^3.0.3",
     "@types/negotiator": "^0.6.1",
     "@types/node": "18.14.6",
@@ -19,6 +20,8 @@
     "@types/react-dom": "18.0.11",
     "@types/react-modal": "^3.16.0",
     "classnames": "^2.3.2",
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
     "js-cookie": "^3.0.5",
     "negotiator": "^0.6.3",
     "next": "^13.4.2",
