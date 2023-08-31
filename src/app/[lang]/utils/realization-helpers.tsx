@@ -2,6 +2,7 @@ import { formatNumber } from "./budget-helpers";
 import { Activity, Measurement, Program, SubActivity } from "./model"
 
 export function formatPercentage(amount: number) : string {
+    if (!isFinite(amount)) amount = 0
     return formatNumber(amount) + '%';
 }
 
