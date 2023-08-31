@@ -65,7 +65,7 @@ export default function Login() {
                         <img src="https://depok.go.id/storage/uploads/blobid0.png" alt="Logo Depok" className="h-32 mx-auto" />
                         <h2 className="text-3xl my-4 lg:text-4xl font-bold font-heading">SIPEP-DKP3</h2>
                         <h3 className="text-violet-400 font-bold">
-                            Sistem Informasi Perencanaan, Evaluasi dan Pelaporan
+                            Sistem Informasi Perencanaan, Evaluasi dan Pelaporan <br />
                             Dinas Ketahanan Pangan, Pertanian dan Perikanan
                         </h3>
                     </div>

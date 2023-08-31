@@ -151,7 +151,7 @@ export default function EditRealizationModal({
                             <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Anggaran<br/>Kas {month?.attributes?.name ?? '-'}</td>
                             <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Realisasi {month?.attributes?.name ?? '-'}</td>
                             <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Realisasi {previousRealization?.month?.data.attributes?.name ?? '-'}</td>
-                            <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Realisasi</td>
+                            <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Realisasi<br />(tanpa satuan)</td>
                             <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Target (%)</td>
                             <td className="bg-slate-200 px-4 py-2 text-center font-semibold">Capaian (%)</td>
                         </tr>
