@@ -5,10 +5,12 @@ import { Month, Program, User } from "../../../utils/model";
 import { Workbook, Borders } from 'exceljs';
 import { saveAs } from "file-saver";
 import { activityBudgetRealization, formatPercentage, formatPercentageFromString, formatWithMeasurement, programBudgetRealization, programsBudgetRealization, subActivityBudgetRealization } from "@/app/[lang]/utils/realization-helpers";
+import { formatDate } from "@/app/[lang]/utils/api-helpers";
 
 interface ReportExportButtonParams {
   user?: User;
   month?: Month;
+  date: Date;
   isUnit: boolean;
   programs: Program[];
 }
@@ -68,6 +70,7 @@ const border: Partial<Borders> = {
 export default function ReportExportButton({
   user,
   month,
+  date,
   isUnit,
   programs,
 } : ReportExportButtonParams) {
@@ -329,7 +332,69 @@ export default function ReportExportButton({
         y = y + 3
 
         // Signature
-        
+        const formattedDate = `Depok, ${formatDate(date.toDateString())}`
+        const isHead = user?.id == 1
+        const headOfUnit = user?.unit?.headOfUnit.at(-1)?.user
+        const headOrganizationSignature = [
+            'Kepala Dinas Ketahanan Pangan,',
+            'Pertanian dan Perikanan',
+            'Kota Depok',
+            '',
+            '',
+            '',
+            '',
+            'Ir. WIDYATI RIYANDANI',
+            'NIP. 196812161994032005',
+        ]
+        const headUnitSignature = [
+            headOfUnit?.position ?? '',
+            'Dinas Ketahanan Pangan, Pertanian dan Perikanan',
+            'Kota Depok',
+            '',
+            '',
+            '',
+            '',
+            headOfUnit?.fullName ?? '',
+            `NIP. ${headOfUnit?.nip}`,
+        ]
+        const picSignature = [
+            user?.position ?? '',
+            'Dinas Ketahanan Pangan, Pertanian dan Perikanan',
+            'Kota Depok',
+            '',
+            '',
+            '',
+            '',
+            user?.fullName ?? '',
+            `NIP. ${user?.nip ?? ''}`,
+        ]
+        let leftSignature = [ 'Mengetahui,']
+        let rightSignature = [ formattedDate ]
+        if (isUnit) {
+            if (isHead) {
+                rightSignature = [...rightSignature, ...headOrganizationSignature]
+            } else {
+                leftSignature = [...leftSignature, ...headOrganizationSignature]
+                rightSignature = [...rightSignature, ...headUnitSignature]
+            }
+        } else {
+            leftSignature = [...leftSignature, ...headUnitSignature]
+            rightSignature = [...rightSignature, ...picSignature]
+        }
+        for (let i = 0; i < 10; i++) {
+            const row = sheet.getRow(y)
+            row.alignment = { vertical: 'middle', horizontal: 'center' };
+            if (i == 8) {
+                row.font = { bold: true, underline: true };
+            }
+            if (!isHead) {
+                sheet.mergeCells(`A${y}:C${y}`)
+                row.getCell(3).value = leftSignature[i]
+            }
+            sheet.mergeCells(`O${y}:Q${y}`)
+            row.getCell(17).value = rightSignature[i]
+            y++
+        }
 
         // Write to file.
         let until = ''

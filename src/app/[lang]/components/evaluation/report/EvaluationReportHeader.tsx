@@ -11,6 +11,7 @@ interface EvaluationReportHeaderParams {
   month?: Month;
   onMonthChange: (month: Month | undefined) => void;
   onIsUnitChange: (isUnit: boolean) => void;
+  date: Date;
   onDateChange: (date: Date) => void;
 }
 
@@ -20,6 +21,7 @@ export default function EvaluationReportHeader({
   month,
   onMonthChange,
   onIsUnitChange,
+  date,
   onDateChange,
 } : EvaluationReportHeaderParams) {
   const isHead = user?.id == 1
@@ -67,6 +69,7 @@ export default function EvaluationReportHeader({
         <ReportExportButton
           user={user}
           month={month}
+          date={date}
           isUnit={isUnit == 0}
           programs={programs}
         />

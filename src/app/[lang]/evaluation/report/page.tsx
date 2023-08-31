@@ -101,6 +101,7 @@ export default function EvaluationReport() {
                         month={month}
                         onMonthChange={setMonth}
                         onIsUnitChange={setIsUnit}
+                        date={date}
                         onDateChange={setDate}
                     />
                     {
