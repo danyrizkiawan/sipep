@@ -74,8 +74,7 @@ export default function ReportExportButton({
     async function onClick(e: any) {
         e.preventDefault()
         
-        const userId = user?.id
-        if (!userId) return;
+        const userId = isUnit ? undefined : user?.id
         const monthId = month?.id ?? 0
 
         // Modify the workbook
@@ -208,7 +207,7 @@ export default function ReportExportButton({
                 const budgetRealization = activityBudgetRealization(activity, monthId, userId);
                 const budgetRealizationPercentage = budgetRealization / budget * 100
                 const cashRealizationPercentage = budgetRealization / cash * 100
-                if (!isUnit && userId) {
+                if (userId) {
                     subActivities = subActivities.filter(sa => sa.attributes.subActivityPic.at(-1)?.user.data.id == userId)
                     if (subActivities.length == 0) return
                 }
@@ -258,7 +257,7 @@ export default function ReportExportButton({
                     const physicalSolution = realization?.budgetProblem.solution ?? '';
                     const pic = subActivity.attributes.subActivityPic.at(-1)
 
-                    if (!isUnit && userId && (pic?.user.data.id != userId)) return
+                    if (userId && (pic?.user.data.id != userId)) return
                     const values = [
                         '',
                         '',
