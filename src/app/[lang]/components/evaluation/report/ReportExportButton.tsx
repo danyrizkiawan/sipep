@@ -453,9 +453,9 @@ export default function ReportExportButton({
                 if (month && month?.id != 1) {
                     until = `- ${month?.attributes.shortName}`
                 }
-                title = header.title.replace('Jan', `Jan ${until}`)
+                title = title.replace('Jan', `Jan ${until}`)
             }
-            tableHeader1.push({text: header.title, style: 'header', rowSpan: 2})
+            tableHeader1.push({text: title, style: 'header', rowSpan: 2})
         }
         var tableHeader2 = []
         for (let i = 0; i < headers.length; i++) {
